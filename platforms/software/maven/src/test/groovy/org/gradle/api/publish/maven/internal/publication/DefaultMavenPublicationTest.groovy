@@ -28,6 +28,7 @@ import org.gradle.api.artifacts.PublishArtifact
 import org.gradle.api.attributes.Category
 import org.gradle.api.component.ComponentWithVariants
 import org.gradle.api.file.FileCollection
+import org.gradle.api.internal.artifacts.DefaultExcludeRule
 import org.gradle.api.internal.artifacts.DefaultImmutableModuleIdentifierFactory
 import org.gradle.api.internal.artifacts.DefaultModule
 import org.gradle.api.internal.artifacts.DefaultModuleVersionIdentifier
@@ -252,7 +253,7 @@ class DefaultMavenPublicationTest extends Specification {
             getClassifier() >> "artifact-classifier"
             getType() >> "artifact-type"
         }
-        def excludeRule = Mock(ExcludeRule)
+        def excludeRule = new DefaultExcludeRule("*", "*")
 
         when:
         moduleDependency.group >> "dep-group"
@@ -312,7 +313,7 @@ class DefaultMavenPublicationTest extends Specification {
             getType() >> "artifact-type"
         }
         def moduleDependency = Mock(ExternalDependency)
-        def excludeRule = Mock(ExcludeRule)
+        def excludeRule = new DefaultExcludeRule("*", "*")
 
         when:
         artifact.classifier >> "other"
