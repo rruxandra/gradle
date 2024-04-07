@@ -438,6 +438,7 @@ public class MavenComponentParser {
             if (!transitiveConfigiguration) {
                 return EXCLUDE_ALL_RULE;
             }
+
             if (!dependency.isTransitive()) {
                 return EXCLUDE_ALL_RULE;
             }
