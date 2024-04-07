@@ -72,6 +72,7 @@ import org.gradle.util.AttributeTestUtil
 import org.gradle.util.Path
 import org.gradle.util.TestUtil
 import org.junit.Rule
+import spock.lang.Issue
 import spock.lang.Specification
 
 class DefaultMavenPublicationTest extends Specification {
@@ -391,6 +392,7 @@ class DefaultMavenPublicationTest extends Specification {
         }
     }
 
+    @Issue("https://github.com/gradle/gradle/issues/28714")
     def "adopts non-transitive module dependency from component with non-transitive configuration"() {
         given:
         def publication = createPublication()
